@@ -253,7 +253,7 @@ h4 {
 	padding: .3em 0 .3em 2.5em;
 }
 
-#block-menu-block-1 a:hover, #block-menu-block-1 .active a {
+#block-menu-block-1 a:hover, #block-menu-block-1 .active a, #block-menu-block-1 .active-trail a {
 	background-color: #009495;
 	color: #ffffff;
 }

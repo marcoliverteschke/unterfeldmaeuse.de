@@ -11,7 +11,7 @@
 
 		<section id="main" role="main">
 			<?php
-				$two_column = $is_front || $node->type == 'newsmeldung' ;
+				$two_column = $is_front || (isset($node) && $node->type == 'newsmeldung');
 			?>
 			<?php if(!$two_column): ?>
 				<div class="grid-1 grid-first" id="left-column">
