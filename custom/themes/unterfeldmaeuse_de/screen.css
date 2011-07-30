@@ -176,8 +176,13 @@ h4 {
 	font-size: 15px;
 }
 
+#center-column {
+	padding-bottom: 15px;
+}
+
 #center-column p {
 	margin-bottom: 1em;
+	line-height: 140%;
 }
 
 #tabs {
@@ -428,6 +433,42 @@ h4 {
 	border: 5px solid #df9711;
 	color: #df9711;
 }
+
+
+/** Mitglieder **/
+.view-mitglieder td {
+	padding-bottom: 14px;
+	padding-right: 14px
+}
+
+.view-mitglieder td.col-last {
+	padding-right: 0px
+}
+
+.view-mitglieder img {
+	border: 1px solid #ffffff;
+	margin-bottom: 7px;
+}
+
+.no-boxshadow .view-mitglieder img {
+	border: 1px solid #888888;
+}
+
+.boxshadow .view-mitglieder td:hover img {
+	-webkit-box-shadow: 2px 2px 8px #888888;
+}
+
+.view-mitglieder td a {
+	color: #444444;
+	text-decoration: none;
+}
+
+.view-mitglieder td a:hover {
+	color: #444444;
+}
+
+
+
 
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }

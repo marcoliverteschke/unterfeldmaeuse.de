@@ -27,13 +27,13 @@
 			</div>
 			<div class="grid-1 grid-last" id="right-column">
 				<div class="grid-content">
-					<div id="comingsoon">
+<!--					<div id="comingsoon">
 						<h4>Nächste Premiere</h4>
 						<p>Eine Woche voller Samstage</p>
 						<p>26./27. März 2011</p>
-					</div>
+					</div>-->
 					<div id="mitmachen">
-						<h4><a href="#">Mitmachen?</a></h4>
+						<h4><?php echo l('Mitmachen?', 'mitmachen') ?></h4>
 					</div>
 				</div>
 			</div>
