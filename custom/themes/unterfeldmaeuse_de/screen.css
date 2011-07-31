@@ -180,26 +180,22 @@ h4 {
 	padding-bottom: 15px;
 }
 
+a {
+	color: #009495;
+}
+
+a:hover {
+	background-color: #009495;
+	color: #ffffff;
+}
+
 #center-column p {
 	margin-bottom: .5em;
 	line-height: 140%;
 }
 
 #tabs {
-/*	background-color: #009495;*/
 	background-image: url('images/ribbon.png');
-/*	background-image: -webkit-gradient(
-	    linear,
-	    left bottom,
-	    left top,
-	    color-stop(0.17, rgb(0,149,149)),
-	    color-stop(0.8, rgb(17,166,166))
-	);
-	background-image: -moz-linear-gradient(
-	    center bottom,
-	    rgb(0,149,149) 17%,
-	    rgb(17,166,166) 80%
-	);*/
 	height: 75px;
 	font-size: 15px;
 	padding: 0;
@@ -264,9 +260,6 @@ h4 {
 }
 
 #footer ul {
-/*	float: left;
-	position: relative;
-	left: 50%;*/
 	text-align: center;
 	padding: 1em 0;
 }
@@ -333,6 +326,10 @@ h4 {
 	text-shadow: none;
 }
 
+.page-neues .node-newsmeldung h1 a:hover {
+	background-color: transparent;
+}
+
 .page-neues .node-newsmeldung .links {
 	display: block;
 	margin: 0;
@@ -350,7 +347,7 @@ h4 {
 }
 
 .boxshadow .page-neues .node-newsmeldung img {
-	border: 1px solid #ffffff;
+	border: 1px solid #eeeeee;
 }
 
 .boxshadow .page-neues .node-newsmeldung img:hover {
@@ -446,7 +443,7 @@ h4 {
 }
 
 .view-mitglieder img {
-	border: 1px solid #ffffff;
+	border: 1px solid #eeeeee;
 	margin-bottom: 7px;
 }
 
@@ -464,12 +461,14 @@ h4 {
 }
 
 .view-mitglieder td a:hover {
+	background-color: transparent;
 	color: #444444;
 }
 
 
 /** Mitglieder Einzelansicht **/
 .node-mitglied .field-name-field-mitglied-foto img {
+	border: 1px solid #eeeeee;
 	float: right;
 	margin-bottom: 14px;
 	margin-left: 14px;

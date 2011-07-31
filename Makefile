@@ -1,8 +1,7 @@
 LOCALHTDIR=/Applications/MAMP/htdocs
 
 local-init:
-	rm -Rf $(LOCALHTDIR)
-	rsync -aP core/ $(LOCALHTDIR)
+	rsync -aP --exclude=files core/ $(LOCALHTDIR)
 
 local:
 	rsync -aP custom/local.settings.php $(LOCALHTDIR)/sites/default/settings.php
