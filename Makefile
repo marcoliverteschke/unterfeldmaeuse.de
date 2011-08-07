@@ -1,4 +1,4 @@
-LOCALHTDIR=/Applications/MAMP/htdocs
+LOCALHTDIR=/Applications/MAMP/htdocs/unterfeldmaeuse.de
 
 local-init:
 	rsync -aP --exclude=files core/ $(LOCALHTDIR)

@@ -134,6 +134,15 @@ header {
 	background-repeat: no-repeat;
 }
 
+a {
+	color: #009495;
+}
+
+a:hover {
+	background-color: #009495;
+	color: #ffffff;
+}
+
 h1, h2, h3, h4 {
 	font-family: 'Nobile', 'Helvetica Neue', 'Arial', sans-serif;
 }
@@ -145,7 +154,7 @@ h1 {
 	text-transform: uppercase;
 }
 
-h1 a, h1 a:active, h1 a:visited {
+h1 a, h1 a:active, h1 a:visited, h1 a:hover {
 	color: #444444;
 	text-decoration: none;
 }
@@ -157,6 +166,10 @@ h1 a, h1 a:active, h1 a:visited {
 	height: 50px;
 	text-indent: -9999px;
 	width: 404px;
+}
+
+[role="banner"] h1 a:hover {
+	background-color: transparent;
 }
 
 h2 {
@@ -178,15 +191,6 @@ h4 {
 
 #center-column {
 	padding-bottom: 15px;
-}
-
-a {
-	color: #009495;
-}
-
-a:hover {
-	background-color: #009495;
-	color: #ffffff;
 }
 
 #center-column p {
@@ -476,6 +480,12 @@ a:hover {
 
 .node-mitglied .field {
 	margin-bottom: .5em;
+}
+
+
+/** Kontaktformular **/
+input[type="text"] {
+	width: auto;
 }
 
 

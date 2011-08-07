@@ -19,7 +19,6 @@ function menu_position_menu_position_condition_content_type($variables) {
 
   // $node is dynamically added and may not exist.
   $node = isset($variables['context']['node']) ? $variables['context']['node'] : NULL;
-
   return ($node && in_array($node->type, $content_type)) ? TRUE : FALSE;
 }
 

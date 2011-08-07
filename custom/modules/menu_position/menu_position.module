@@ -57,13 +57,9 @@ function menu_position_theme() {
 function menu_position_menu_position_rule_plugins() {
   return array(
     'content_type' => array(
-      'form_callback' => 'menu_position_menu_position_rule_content_type_form',
-      'condition_callback' => 'menu_position_menu_position_condition_content_type',
       'file' => 'plugins/menu_position.content_type.inc',
     ),
     'pages' => array(
-      'form_callback' => 'menu_position_menu_position_rule_pages_form',
-      'condition_callback' => 'menu_position_menu_position_condition_pages',
       'file' => 'plugins/menu_position.pages.inc',
     ),
   );
@@ -86,7 +82,7 @@ function menu_position_form_menu_edit_item_alter(&$form, &$form_state) {
 }
 
 /**
- * Implements hook_menu_link_update().
+ * Implements hook_menu_link_alter().
  */
 function menu_position_menu_link_alter(&$item) {
   if (isset($item['module']) && $item['module'] == 'menu_position') {
@@ -114,7 +110,8 @@ function menu_position_menu_link_update($link) {
 function menu_position_evaluate_rules($context = array()) {
   $path = $context['path'];
 
-  // Retrieve the rules from the database.
+  // Retrieve the rules from the database. For speed, we don't call
+  // menu_position_read_rules() and unserialize the conditions only if needed.
   $rules = db_query('SELECT * FROM {menu_position_rules} WHERE enabled = :enabled ORDER BY weight, rid', array(':enabled' => 1));
 
   // Retrieve the list of menus the path is already in.
@@ -206,7 +203,6 @@ function menu_position_evaluate_rules($context = array()) {
         // Replace the menu_position item with the original menu item.
         array_pop($active_trail);
         $active_trail[] = $original_router_item;
-        menu_set_active_trail($active_trail);
         $breadcrumb_set = TRUE;
       }
 
@@ -268,8 +264,8 @@ function menu_position_get_plugins() {
           $plugins[$name] = $plugin + array(
             'module' => $module,
             'file' => '',
-            'form_callback' => $module . 'menu_position_rule_' . $name . '_form',
-            'condition_callback' => $module . 'menu_position_condition_' . $name,
+            'form_callback' => $module . '_menu_position_rule_' . $name . '_form',
+            'condition_callback' => $module . '_menu_position_condition_' . $name,
           );
         }
       }
