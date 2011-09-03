@@ -263,6 +263,14 @@ h4 {
 	color: #ffffff;
 }
 
+.block-system {
+	margin-top: 30px;
+}
+
+.block-system h2 {
+	margin-bottom: 7px;
+}
+
 #footer ul {
 	text-align: center;
 	padding: 1em 0;
