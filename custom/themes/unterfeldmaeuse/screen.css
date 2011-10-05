@@ -1,3 +1,7 @@
+/* @override 
+	http://s374957061.online.de/themes/unterfeldmaeuse_de/screen.css?lqzm4u
+	http://s374957061.online.de/themes/unterfeldmaeuse/screen.css?lsl5ke
+*/
 
 /* ==== Scroll down to find where to put your styles :) ==== */
 
@@ -267,6 +271,10 @@ h4 {
 	margin-top: 30px;
 }
 
+#block-system-main {
+	margin-top: 0px;
+}
+
 .block-system h2 {
 	margin-bottom: 7px;
 }
@@ -289,6 +297,7 @@ h4 {
 }
 
 #footer a:hover {
+	background: none;
 	color: #009495;
 }
 
