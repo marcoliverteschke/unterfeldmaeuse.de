@@ -99,6 +99,14 @@ body {
 	margin: .1em 0;
 }
 
+em {
+	font-style: italic;
+}
+
+strong {
+	font-style: bold;
+}
+
 .clear {
 	clear: both;
 	float: none;
