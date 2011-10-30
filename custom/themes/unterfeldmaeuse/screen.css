@@ -197,6 +197,11 @@ h2 {
 	text-shadow: none;
 }
 
+h3 {
+	font-size: 15px;
+	margin: 15px 0 7px 0;
+}
+
 h4 {
 	font-size: 15px;
 }
@@ -505,6 +510,61 @@ h4 {
 
 .node-mitglied .field {
 	margin-bottom: .5em;
+}
+
+
+/** Aufführungen **/
+.view-auffuehrungen td {
+	padding-bottom: 14px;
+	padding-right: 14px
+}
+
+.view-auffuehrungen td.col-last {
+	padding-right: 0px
+}
+
+.view-auffuehrungen img {
+	border: 1px solid #eeeeee;
+	margin-bottom: 7px;
+}
+
+.no-boxshadow .view-auffuehrungen img {
+	border: 1px solid #888888;
+}
+
+.boxshadow .view-auffuehrungen td:hover img {
+	-webkit-box-shadow: 2px 2px 8px #888888;
+}
+
+.view-auffuehrungen td a {
+	color: #444444;
+	text-decoration: none;
+}
+
+.view-auffuehrungen td a:hover {
+	background-color: transparent;
+	color: #444444;
+}
+
+
+/** Aufführung Einzelansicht **/
+.node-auff-hrung .field-name-field-auffuehrung-bild img {
+	border: 1px solid #eeeeee;
+	float: right;
+	margin-bottom: 14px;
+	margin-left: 14px;
+}
+
+.node-auff-hrung .field {
+	margin-bottom: .5em;
+}
+
+.field-label-above .field-label {
+	margin-bottom: .3em;	
+}
+
+.field-name-field-auffuehrung-mitwirkende td {
+	padding-bottom: .2em;
 }
 
 
