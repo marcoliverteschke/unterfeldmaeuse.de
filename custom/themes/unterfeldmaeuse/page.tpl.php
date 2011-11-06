@@ -32,9 +32,7 @@
 						<p>Eine Woche voller Samstage</p>
 						<p>26./27. März 2011</p>
 					</div>-->
-					<div id="mitmachen">
-						<h4><?php echo l('Mitmachen?', 'mitmachen') ?></h4>
-					</div>
+					<?php print render($page['sidebar_second']); ?>
 				</div>
 			</div>
 			<div class="clear"></div>

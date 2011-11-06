@@ -1,7 +1,4 @@
-/* @override 
-	http://s374957061.online.de/themes/unterfeldmaeuse_de/screen.css?lqzm4u
-	http://s374957061.online.de/themes/unterfeldmaeuse/screen.css?lsl5ke
-*/
+/* @override http://s374957061.online.de/themes/unterfeldmaeuse/screen.css?ltzler */
 
 /* ==== Scroll down to find where to put your styles :) ==== */
 
@@ -426,31 +423,47 @@ h4 {
 }
 
 
-#comingsoon {
+#right-column .block {
+	margin-bottom: 1em;
+}
+
+#block-block-2 {
 	border: 2px solid #df1114;
 	margin-bottom: 24px;
-}
-
-#comingsoon p {
-	padding: .2em;
-}
-
-#comingsoon h4 {
-	background-color: #df1114;
-	color: #ffffff;
-	padding: .2em .2em;
-}
-
-
-#mitmachen {
 	text-align: center;
 }
 
-#mitmachen h4 {
-	font-size: 1.5em;
+#block-block-2 p {
+	padding: .2em;
 }
 
-#mitmachen a {
+#block-block-2 h4 {
+	background-color: #df1114;
+	font-size: 1.5em;
+	padding: .2em .2em;
+}
+
+#block-block-2 h4 a {
+	color: #ffffff;
+	display: block;
+	padding: .8em .5em;
+	text-decoration: none;
+}
+
+#block-block-2 h4 a:hover {
+}
+
+
+#block-block-1 {
+	text-align: center;
+}
+
+#block-block-1 h4 {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+#block-block-1 a {
 	background-color: #df9711;
 	border: 5px solid #df9711;
 	color: #ffffff;
@@ -459,7 +472,7 @@ h4 {
 	text-decoration: none;
 }
 
-#mitmachen a:hover {
+#block-block-1 a:hover {
 	background-color: #ffffff;
 	border: 5px solid #df9711;
 	color: #df9711;
@@ -516,7 +529,9 @@ h4 {
 /** Aufführungen **/
 .view-auffuehrungen td {
 	padding-bottom: 14px;
-	padding-right: 14px
+	padding-right: 14px;
+	text-align: center;
+	width: 294px;
 }
 
 .view-auffuehrungen td.col-last {
@@ -525,6 +540,8 @@ h4 {
 
 .view-auffuehrungen img {
 	border: 1px solid #eeeeee;
+	display: block;
+	margin: 0 auto;
 	margin-bottom: 7px;
 }
 
@@ -566,6 +583,63 @@ h4 {
 .field-name-field-auffuehrung-mitwirkende td {
 	padding-bottom: .2em;
 }
+
+
+/** Bildergalerien **/
+.view-bildergalerien td {
+	padding-bottom: 14px;
+	padding-right: 14px;
+	text-align: center;
+	width: 294px;
+}
+
+.view-bildergalerien td.col-last {
+	padding-right: 0px
+}
+
+.view-bildergalerien img {
+	border: 1px solid #eeeeee;
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 7px;
+}
+
+.no-boxshadow .view-bildergalerien img {
+	border: 1px solid #888888;
+}
+
+.boxshadow .view-bildergalerien td:hover img {
+	-webkit-box-shadow: 2px 2px 8px #888888;
+}
+
+.view-bildergalerien td a {
+	color: #444444;
+	text-decoration: none;
+}
+
+.view-bildergalerien td a:hover {
+	background-color: transparent;
+	color: #444444;
+}
+
+
+/** Bildergalerie Einzelansicht **/
+.node-bildergalerie .field-name-field-bildergalerie-bilder .field-item {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+.node-bildergalerie img {
+	border: 1px solid #ffffff;
+	display: block;
+}
+
+.node-bildergalerie img:hover {
+	border: 1px solid #888888;
+	display: block;
+}
+
 
 
 /** Kontaktformular **/

@@ -46,9 +46,9 @@
 <!--[if IE 8 ]>    <html lang="<?php print $language->language; ?>" class="no-js ie8"> <![endif]-->
 <!--[if IE 9 ]>    <html lang="<?php print $language->language; ?>" class="no-js ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="<?php print $language->language; ?>" class="no-js" <?php print $rdf_namespaces; ?>> <!--<![endif]-->
-<head profile="<?php print $grddl_profile; ?>">
+<head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!--	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
