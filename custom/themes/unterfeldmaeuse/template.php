@@ -1,5 +1,24 @@
 <?php
 
+	function unterfeldmaeuse_preprocess_html(&$variables)
+	{
+		$two_col_pages = array(
+			'verein/vorstand',
+			'kartenvorverkauf/vorverkaufstellen'
+		);
+		
+		$preAlias = $_SERVER['REQUEST_URI'];
+		$alias = substr(strchr($preAlias, "/"), 1);
+
+		$columns = 'three-columns';
+		if(in_array($alias, $two_col_pages))
+		{
+			$columns = 'two-columns';
+		}
+		$variables['classes_array'][] = $columns;
+	}
+
+
 	function unterfeldmaeuse_menu_tree($variables)
 	{
 		if(preg_match('/Impressum/', $variables['tree']))

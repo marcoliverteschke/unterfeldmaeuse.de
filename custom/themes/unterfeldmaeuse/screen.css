@@ -1,4 +1,7 @@
-/* @override http://s374957061.online.de/themes/unterfeldmaeuse/screen.css?ltzler */
+/* @override 
+	http://s374957061.online.de/themes/unterfeldmaeuse/screen.css?lu8nmb
+	http://s374957061.online.de/themes/unterfeldmaeuse/screen.css?lujxwe
+*/
 
 /* ==== Scroll down to find where to put your styles :) ==== */
 
@@ -183,9 +186,15 @@ h1 a, h1 a:active, h1 a:visited, h1 a:hover {
 
 h2 {
 	font-size: 18px;
+	margin: 1.5em 0 1em 0;
+}
+
+header h2 {
+	font-size: 18px;
 	margin-bottom: 48px;
 	padding: 0 0 0 24px;
 }
+
 
 .grid-content h1 {
 	font-size: 18px;
@@ -285,9 +294,9 @@ h4 {
 	margin-top: 0px;
 }
 
-.block-system h2 {
+/*.block-system h2 {
 	margin-bottom: 7px;
-}
+}*/
 
 #footer ul {
 	text-align: center;
@@ -313,7 +322,6 @@ h4 {
 
 .grid-1, .grid-2, .grid-3, .grid-4 {
 	float: left;
-	margin-right: 24px;
 	min-height: 1em;
 }
 
@@ -326,11 +334,19 @@ h4 {
 }
 
 .grid-2 {
-	width: 488px;
+	width: 530px;
 }
 
 .grid-3 {
 	width: 712px;
+}
+
+.two-columns #right-column {
+	display: none;
+}
+
+.two-columns .grid-2 {
+	width: 730px;
 }
 
 .grid-content {
@@ -647,6 +663,33 @@ input[type="text"] {
 	width: auto;
 }
 
+
+/** Vorverkaufstellen **/
+#vorverkaufstellen {
+	table-layout: fixed;
+}
+
+#vorverkaufstellen td {
+	padding: .7em .5em .7em .5em;
+}
+
+#vorverkaufstellen .logos {
+	vertical-align: middle;
+	text-align: center;
+	width: 175px;
+}
+
+#vorverkaufstellen .adressen {
+	width: 275px;
+}
+
+#vorverkaufstellen .kontakt {
+	width: 225px;
+}
+
+#vorverkaufstellen tr:hover td {
+	background-color: #f2f2f2;
+}
 
 
 
