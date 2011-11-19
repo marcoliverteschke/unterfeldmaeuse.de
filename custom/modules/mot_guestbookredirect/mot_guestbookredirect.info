@@ -1,0 +1,10 @@
+name = Guestbook Redirect
+description = After node creation Drupal will show the new node. In a guestbook where visitors can add nodes, we do not want this. This module adds a redirect when viewing the guestbook-nodes.
+core = 7.x
+
+; Information added by drupal.org packaging script on 2011-03-04
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "mot_guestbookredirect"
+datestamp = "1299240324"
+

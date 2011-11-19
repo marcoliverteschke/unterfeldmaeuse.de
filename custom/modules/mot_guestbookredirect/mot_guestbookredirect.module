@@ -1,0 +1,11 @@
+<?php
+
+	function mot_guestbookredirect_node_view($node, $view_mode, $langcode)
+	{
+		if($node->type && $view_mode == 'full')
+		{
+			drupal_goto('gästebuch', array(), 301);
+		}
+	}
+
+?>

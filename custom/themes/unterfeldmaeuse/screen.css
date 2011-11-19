@@ -692,6 +692,36 @@ input[type="text"] {
 }
 
 
+/** Gästebuch **/
+#block-formblock-gaestebucheintrag .filter-wrapper {
+	display: none;
+}
+
+#block-formblock-gaestebucheintrag .toggle {
+	color: #009495;
+	cursor: pointer;
+	font-family: 'Helvetica Neue', 'Arial', sans-serif;
+	font-size: 14px;
+	text-decoration: underline;
+}
+
+.view-id-gaestebuch .views-row {
+	margin-bottom: 2em;
+}
+
+.view-id-gaestebuch .views-row .views-field-created {
+	float: right;
+	font-size: 12px;
+}
+
+.view-id-gaestebuch .views-row .views-field-title {
+	font-weight: bold;
+	margin: 4px 0;
+}
+
+
+
+
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
 .hidden { display: none; visibility: hidden; }
