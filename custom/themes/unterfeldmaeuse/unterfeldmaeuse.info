@@ -5,6 +5,7 @@ version = VERSION
 core = 7.x
 stylesheets[all][] = screen.css
 scripts[] = js/libs/modernizr-1.7.min.js
+scripts[] = js/script.js
 
 ; Information added by drupal.org packaging script on 2011-06-30
 version = "0.1"
