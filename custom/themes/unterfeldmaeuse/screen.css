@@ -530,15 +530,38 @@ h4 {
 
 
 /** Mitglieder Einzelansicht **/
-.node-mitglied .field-name-field-mitglied-foto img {
-	border: 1px solid #eeeeee;
+.node-mitglied .field {
+	float: left;
+	margin-bottom: .5em;
+}
+
+.node-mitglied .field-items {
+	width: 190px;
+}
+
+.node-mitglied .field-name-field-mitglied-foto {
 	float: right;
 	margin-bottom: 14px;
 	margin-left: 14px;
 }
 
-.node-mitglied .field {
-	margin-bottom: .5em;
+.node-mitglied .field-name-field-mitglied-foto .field-items, .node-mitglied .field-name-body .field-items {
+	width: auto;
+}
+
+.node-mitglied .field-name-field-mitglied-foto img {
+	border: 1px solid #eeeeee;
+	display: block;
+}
+
+
+.node-mitglied .field-name-body {
+	margin-top: 1em;
+}
+
+.node-mitglied .field-label {
+	float: left;
+	width: 125px;
 }
 
 
