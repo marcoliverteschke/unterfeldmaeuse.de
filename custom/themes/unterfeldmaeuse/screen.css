@@ -415,6 +415,23 @@ h4 {
 	margin: 0 0 .5em .5em;
 }
 
+.page-neues .pager {
+	margin-top: 1em;
+}
+
+.page-neues .pager .pager-next, .page-neues .pager .pager-previous {
+	width: 1em;
+}
+
+.page-neues .pager a {
+	text-decoration: none;
+}
+
+.page-neues .pager a:hover {
+	background-color: #ffffff;
+}
+
+
 /** News Einzelansicht **/
 .node-type-newsmeldung .field-name-field-newsmeldung-image, .node-type-newsmeldung .field-name-field-newsmeldung-image div {
 	display: inline;
@@ -467,6 +484,8 @@ h4 {
 }
 
 #block-block-2 h4 a:hover {
+	background-color: #ffffff;
+	color: #df1114;
 }
 
 
@@ -597,9 +616,10 @@ h4 {
 	text-decoration: none;
 }
 
-.view-auffuehrungen td a:hover {
+.view-auffuehrungen td a:hover, .view-auffuehrungen td:hover a {
 	background-color: transparent;
 	color: #444444;
+	text-decoration: underline;
 }
 
 
@@ -656,9 +676,10 @@ h4 {
 	text-decoration: none;
 }
 
-.view-bildergalerien td a:hover {
+.view-bildergalerien td a:hover, .view-bildergalerien td:hover a {
 	background-color: transparent;
 	color: #444444;
+	text-decoration: underline;
 }
 
 
