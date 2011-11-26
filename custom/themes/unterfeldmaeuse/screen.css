@@ -764,6 +764,58 @@ input[type="text"] {
 }
 
 
+/** Kartenbestellung **/
+#webform-client-form-271 label {
+	margin-bottom: .3em;
+}
+
+#webform-client-form-271 .webform-container-inline label {
+	display: block;
+	float: left;
+	margin-bottom: 0;
+	width: 175px;
+}
+
+#webform-component-gesamtbetrag {
+	font-size: 1.2em;
+	margin: 2em 0;
+}
+
+#webform-component-gesamtbetrag-val {
+	display: none;
+}
+
+h2.webform-page {
+	display: none;
+}
+
+#webform-client-form-271 .form-submit {
+	margin-right: 2em;
+}
+
+#edit-submitted-eingaben-uberprufen .form-item {
+	font-weight: bold;
+	height: 1.25em;
+	width: 100%;
+}
+
+#edit-submitted-eingaben-uberprufen .form-item label {
+	display: block;
+	float: left;
+	font-weight: normal;
+	margin-bottom: 5px;
+	width: 180px;
+}
+
+label[for='edit-submitted-eingaben-uberprufen'] {
+	font-family: 'Nobile', 'Helvetica Neue', 'Arial', sans-serif;
+	font-size: 18px;
+	margin: 1.5em 0 1em 0;
+}
+
+#edit-submitted-eingaben-uberprufen #webform-component-gesamtbetrag-val {
+	display: block;
+}
 
 
 
