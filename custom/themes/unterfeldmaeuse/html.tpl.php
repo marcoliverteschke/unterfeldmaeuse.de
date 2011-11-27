@@ -48,7 +48,6 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="<?php print $language->language; ?>" class="no-js" <?php print $rdf_namespaces; ?>> <!--<![endif]-->
 <head>
 	<meta charset="UTF-8">
-<!--	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,8 +58,12 @@
 	<link rel="shortcut icon" href="/favicon.ico">
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 	<link href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<!--	<link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">-->
-	<?php print $styles; ?>
+	<!--[if ! lte IE 6]><!-->
+		<?php print $styles; ?>
+	<!--<![endif]-->
+	<!--[if IE 6 ]>
+		<link rel="stylesheet" href="/<?php echo path_to_theme() ?>/ie6.1.1.css" />
+	<![endif]-->
 	<?php print $scripts; ?>
 </head>
 
