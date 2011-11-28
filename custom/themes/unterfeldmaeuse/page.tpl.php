@@ -27,11 +27,6 @@
 			</div>
 			<div class="grid-1 grid-last" id="right-column">
 				<div class="grid-content">
-<!--					<div id="comingsoon">
-						<h4>Nächste Premiere</h4>
-						<p>Eine Woche voller Samstage</p>
-						<p>26./27. März 2011</p>
-					</div>-->
 					<?php print render($page['sidebar_second']); ?>
 				</div>
 			</div>
@@ -41,17 +36,6 @@
 		<footer>
 			<nav id="footer">
 				<?php print render($page['footer']); ?>
-				<!--<ul>
-					<li>&copy; 2011 Unterfeldmäuse Erkrath</li>
-					<li><span class="separator">|</li>
-					<li><a href="#">unterfeldmaeuse.de</a></li>
-					<li><span class="separator">|</li>
-					<li><a href="#">Freunde & Förderer</a></li>
-					<li><span class="separator">|</li>
-					<li><a href="#">AGB</a></li>
-					<li><span class="separator">|</li>
-					<li><a href="#">Impressum</a></li>
-				</ul>-->
 				<div class="clear"></div>
 			</nav>
 		</footer>
