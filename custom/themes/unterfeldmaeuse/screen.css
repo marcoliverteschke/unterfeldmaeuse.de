@@ -727,7 +727,17 @@ input[type="text"] {
 	width: 16.0714285714em; /* 225 px / 14 px */
 }
 
-#vorverkaufstellen tr:hover td {
+#vorverkaufstellen tbody tr:hover td {
+	background-color: #f2f2f2;
+}
+
+
+/** Fragen & Antworten **/
+#faqs td {
+	padding: .7em .5em .7em .5em;
+}
+
+#faqs tbody tr:hover td {
 	background-color: #f2f2f2;
 }
 

@@ -4,11 +4,12 @@
 	{
 		$two_col_pages = array(
 			'verein/vorstand',
-			'kartenvorverkauf/vorverkaufstellen'
+			'kartenvorverkauf/vorverkaufstellen',
+			'freunde-förderer'
 		);
 		
 		$preAlias = $_SERVER['REQUEST_URI'];
-		$alias = substr(strchr($preAlias, "/"), 1);
+		$alias = urldecode(substr(strchr($preAlias, "/"), 1));
 
 		$columns = 'three-columns';
 		if(in_array($alias, $two_col_pages))
