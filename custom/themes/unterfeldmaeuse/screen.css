@@ -1,6 +1,7 @@
 /* @override 
 	http://s374957061.online.de/themes/unterfeldmaeuse/screen.css?lu8nmb
 	http://s374957061.online.de/themes/unterfeldmaeuse/screen.css?lujxwe
+	http://s374957061.online.de/themes/unterfeldmaeuse/screen.css?lvonm9
 */
 
 /* ==== Scroll down to find where to put your styles :) ==== */
@@ -872,6 +873,36 @@ label[for='edit-submitted-eingaben-uberprufen'] {
 
 #edit-submitted-eingaben-uberprufen #webform-component-gesamtbetrag-val {
 	display: block;
+}
+
+/** Vereinsgeschichte **/
+.smart-paging-pager .smart-paging-pager-box, .smart-paging-pager .pager .pager-first, .smart-paging-pager .pager .pager-last {
+	display: none;
+}
+
+
+/** Pressearchiv **/
+.page-auffuehrungen-presse .content ul, .page-auffuehrungen-presse li{
+	list-style: none;
+	margin: 0;
+}
+
+.page-auffuehrungen-presse table {
+	width: 100%;
+}
+
+.page-auffuehrungen-presse td {
+	width: 50%;
+}
+
+.page-auffuehrungen-presse .views-field-title {
+	margin: 0 0 .5em 0;
+}
+
+.page-auffuehrungen-presse td img {
+	border: 1px solid #888888;
+	display: block;
+	margin: 0 0 .5em 0;
 }
 
 
