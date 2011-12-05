@@ -1,5 +1,5 @@
 /**
- * jQuery Validation Plugin 1.8.0
+ * jQuery Validation Plugin @VERSION
  *
  * http://bassistance.de/jquery-plugins/jquery-plugin-validation/
  * http://docs.jquery.com/Plugins/Validation
@@ -28,6 +28,9 @@ $.extend($.fn, {
 		if ( validator ) {
 			return validator;
 		}
+
+		// Add novalidate tag if HTML5.
+		this.attr('novalidate', 'novalidate');
 
 		validator = new $.validator( options, this[0] );
 		$.data(this[0], 'validator', validator);
@@ -238,11 +241,19 @@ $.extend($.validator, {
 			else if (element.parentNode.name in this.submitted)
 				this.element(element.parentNode);
 		},
-		highlight: function( element, errorClass, validClass ) {
-			$(element).addClass(errorClass).removeClass(validClass);
+		highlight: function(element, errorClass, validClass) {
+			if (element.type === 'radio') {
+				this.findByName(element.name).addClass(errorClass).removeClass(validClass);
+			} else {
+				$(element).addClass(errorClass).removeClass(validClass);
+			}
 		},
-		unhighlight: function( element, errorClass, validClass ) {
-			$(element).removeClass(errorClass).addClass(validClass);
+		unhighlight: function(element, errorClass, validClass) {
+			if (element.type === 'radio') {
+				this.findByName(element.name).removeClass(errorClass).addClass(validClass);
+			} else {
+				$(element).removeClass(errorClass).addClass(validClass);
+			}
 		}
 	},
 
@@ -303,8 +314,13 @@ $.extend($.validator, {
 				validator.settings[eventType] && validator.settings[eventType].call(validator, this[0] );
 			}
 			$(this.currentForm)
-				.validateDelegate(":text, :password, :file, select, textarea", "focusin focusout keyup", delegate)
-				.validateDelegate(":radio, :checkbox, select, option", "click", delegate);
+			       .validateDelegate("[type='text'], [type='password'], [type='file'], select, textarea, " +
+						"[type='number'], [type='search'] ,[type='tel'], [type='url'], " +
+						"[type='email'], [type='datetime'], [type='date'], [type='month'], " +
+						"[type='week'], [type='time'], [type='datetime-local'], " +
+						"[type='range'], [type='color'] ",
+						"focusin focusout keyup", delegate)
+				.validateDelegate("[type='radio'], [type='checkbox'], select, option", "click", delegate);
 
 			if (this.settings.invalidHandler)
 				$(this.currentForm).bind("invalid-form.validate", this.settings.invalidHandler);
@@ -432,9 +448,8 @@ $.extend($.validator, {
 				rulesCache = {};
 
 			// select all valid inputs inside the form (no submit or reset buttons)
-			// workaround $Query([]).add until http://dev.jquery.com/ticket/2114 is solved
-			return $([]).add(this.currentForm.elements)
-			.filter(":input")
+			return $(this.currentForm)
+			.find("input, select, textarea")
 			.not(":submit, :reset, :image, [disabled]")
 			.not( this.settings.ignore )
 			.filter(function() {
@@ -576,7 +591,7 @@ $.extend($.validator, {
           element: element
         });
       }
-      
+
 			this.errorMap[element.name] = message;
 			this.submitted[element.name] = message;
 		},
@@ -625,7 +640,7 @@ $.extend($.validator, {
 			var label = this.errorsFor( element );
 			if ( label.length ) {
 				// refresh error/success class
-				label.removeClass().addClass( this.settings.errorClass );
+				label.removeClass( this.settings.validClass ).addClass( this.settings.errorClass );
 
 				// check if we have a generated label, replace the message then
 				label.attr("generated") && label.html(message);
@@ -750,6 +765,7 @@ $.extend($.validator, {
 		dateISO: {dateISO: true},
 		dateDE: {dateDE: true},
 		number: {number: true},
+		numberDE: {numberDE: true},
 		digits: {digits: true},
 		creditcard: {creditcard: true}
 	},
@@ -758,10 +774,6 @@ $.extend($.validator, {
 		className.constructor == String ?
 			this.classRuleSettings[className] = rules :
 			$.extend(this.classRuleSettings, className);
-	},
-
-	removeClassRules: function(className) {
-  	this.classRuleSettings[className] = null;
 	},
 
 	classRules: function(element) {
@@ -783,6 +795,8 @@ $.extend($.validator, {
 			var value = $element.attr(method);
 			if (value) {
 				rules[method] = value;
+			} else if ($element[0].getAttribute("type") === method) {
+				rules[method] = true;
 			}
 		}
 

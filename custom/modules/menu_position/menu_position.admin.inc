@@ -5,60 +5,29 @@
  */
 
 /**
- * Implements hook_menu().
- */
-function _menu_position_menu() {
-  $items['admin/structure/menu-position'] = array(
-    'title' => 'Menu position rules',
-    'description' => 'Configure rules for menu positions.',
-    'access arguments' => array('administer menu positions'),
-    'page callback' => 'menu_position_rules_form_callback',
-    'type' => MENU_NORMAL_ITEM,
-    'file' => 'menu_position.admin.inc',
-  );
-  $items['admin/structure/menu-position/add'] = array(
-    'title' => 'Add menu position rule',
-    'description' => 'Add a new menu position rule.',
-    'access arguments' => array('administer menu positions'),
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('menu_position_add_rule_form'),
-    'type' => MENU_LOCAL_ACTION,
-    'file' => 'menu_position.admin.inc',
-  );
-  $items['admin/structure/menu-position/edit'] = array(
-    'title' => 'Edit menu position rule',
-    'description' => 'Edit a menu position rule.',
-    'access arguments' => array('administer menu positions'),
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('menu_position_edit_rule_form'),
-    'type' => MENU_CALLBACK,
-    'file' => 'menu_position.admin.inc',
-  );
-  $items['admin/structure/menu-position/delete'] = array(
-    'title' => 'Delete menu position rule',
-    'description' => 'Delete a menu position rule.',
-    'access arguments' => array('administer menu positions'),
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('menu_position_delete_rule_form'),
-    'type' => MENU_CALLBACK,
-    'file' => 'menu_position.admin.inc',
-  );
-  $items['menu-position'] = array(
-    'title' => 'Menu position router',
-    'description' => 'Sets access to all menu position links.',
-    'access arguments' => array('access content'),
-    'page callback' => 'menu_position_router',
-    'type' => MENU_CALLBACK,
-    'file' => 'menu_position.admin.inc',
-  );
-  return $items;
-}
-
-/**
  * Routes menu_position links to homepage; normally overridden.
  */
 function menu_position_router() {
   drupal_goto('<front>');
+}
+
+/**
+ * Form definition: global settings for Menu position rules.
+ */
+function menu_position_settings_form($form, &$form_state) {
+  $form = array();
+  $form['menu_position_active_link_display'] = array(
+    '#type' => 'radios',
+    '#title' => t('When a menu position rule matches:'),
+    '#options' => array(
+      'child' => t("Insert the current page's title into the menu tree."),
+      'parent' => t('Mark the rule\'s parent menu item as being "active".'),
+      'none' => t('Don\'t mark any menu as being "active".'),
+    ),
+    '#default_value' => variable_get('menu_position_active_link_display', 'child'),
+    '#description' => t("By default, a matching menu position rule will insert the current page's title into the menu tree just below the rule's parent menu item."),
+  );
+  return system_settings_form($form);
 }
 
 /**
@@ -83,12 +52,17 @@ function _menu_position_form_menu_overview_form_alter(&$form, &$form_state) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements hook_form_menu_edit_item_alter().
+ *
+ * This handles the edge case of another module accidentally exposing (or of a
+ * user hacking the URL to) the standard "menu link edit" form for a menu
+ * position rule's hidden menu link. We alter the form so that it is not posible
+ * for the link to be edited.
  */
 function _menu_position_form_menu_edit_item_alter(&$form, &$form_state) {
   // Retrieve all of the rules' mlids.
-  $result = db_query('SELECT mlid FROM {menu_position_rules} WHERE mlid = :mlid ORDER BY weight, rid', array(':mlid' => (int) $form['mlid']['#value']));
-  if ($result->rowCount()) {
+  $mlids = db_query('SELECT mlid FROM {menu_position_rules} WHERE mlid = :mlid ORDER BY weight, rid', array(':mlid' => (int) $form['mlid']['#value']))->fetchAll();
+  if (!empty($mlids)) {
     // If the form hasn't been submitted, display a warning.
     if (empty($form_state['input'])) {
       drupal_set_message(t('This menu item cannot be edited.'), 'warning');
@@ -154,8 +128,8 @@ function menu_position_edit_item_submit($form, &$form_state) {
  */
 function menu_position_enable_helper() {
   // Find rules with zero-value menu links.
-  $rules = db_query('SELECT rid, plid, admin_title FROM {menu_position_rules} WHERE enabled = :enabled AND mlid = :mlid', array(':enabled' => 1, ':mlid' => 0));
-  if ($rules->rowCount()) {
+  $rules = db_query('SELECT rid, plid, admin_title FROM {menu_position_rules} WHERE enabled = :enabled AND mlid = :mlid', array(':enabled' => 1, ':mlid' => 0))->fetchAll();
+  if (!empty($rules)) {
     drupal_set_message(t('Existing menu position rules were discovered and have now been re-configured so they will continue to work.'));
   }
   foreach ($rules as $rule) {
@@ -186,8 +160,8 @@ function menu_position_rules_form($form, &$form_state) {
   // We're re-using classes from the menu module.
   $form['#attached']['css'] = array(drupal_get_path('module', 'menu') . '/menu.css');
 
-  $rules = db_query('SELECT rid, admin_title, menu_name, enabled, weight FROM {menu_position_rules} ORDER BY weight, rid');
-  $delta = $rules->rowCount();
+  $rules = db_query('SELECT rid, admin_title, plid, menu_name, enabled, weight FROM {menu_position_rules} ORDER BY weight, rid')->fetchAll();
+  $delta = count($rules);
 
   $menus = menu_get_menus();
 
@@ -203,9 +177,10 @@ function menu_position_rules_form($form, &$form_state) {
       '#theme' => 'menu_position_rules_order',
     );
     foreach ($rules as $rule) {
+      $menu_link = menu_link_load($rule->plid);
       $form['rules'][$rule->rid] = array(
         'title' => array(
-          '#markup' => check_plain($rule->admin_title),
+          '#markup' => '<strong>' . check_plain($rule->admin_title) . '</strong> (' . t('Positioned under: %title', array('%title' => check_plain($menu_link['title']))) . ')',
         ),
         'menu_name' => array(
           '#markup' => check_plain($menus[$rule->menu_name]),
@@ -350,11 +325,11 @@ function menu_position_edit_rule_form($form, &$form_state, $rid = 0) {
  */
 function menu_position_rule_form($form, &$form_state) {
   // Set the default values.
-  $rid           = !empty($form_state['#menu-position-rule']['rid'])         ? $form_state['#menu-position-rule']['rid'] : '';
-  $admin_title   = !empty($form_state['#menu-position-rule']['admin_title']) ? $form_state['#menu-position-rule']['admin_title'] : '';
-  $menu_name     = !empty($form_state['#menu-position-rule']['menu_name'])   ? $form_state['#menu-position-rule']['menu_name'] : '';
-  $plid          = !empty($form_state['#menu-position-rule']['plid'])        ? $form_state['#menu-position-rule']['plid'] : NULL;
-  $mlid          = !empty($form_state['#menu-position-rule']['mlid'])        ? $form_state['#menu-position-rule']['mlid'] : NULL;
+  $rid          = !empty($form_state['#menu-position-rule']['rid'])         ? $form_state['#menu-position-rule']['rid'] : '';
+  $admin_title  = !empty($form_state['#menu-position-rule']['admin_title']) ? $form_state['#menu-position-rule']['admin_title'] : '';
+  $menu_name    = !empty($form_state['#menu-position-rule']['menu_name'])   ? $form_state['#menu-position-rule']['menu_name'] : '';
+  $plid         = !empty($form_state['#menu-position-rule']['plid'])        ? $form_state['#menu-position-rule']['plid'] : NULL;
+  $mlid         = !empty($form_state['#menu-position-rule']['mlid'])        ? $form_state['#menu-position-rule']['mlid'] : NULL;
 
   $form['rid'] = array(
     '#type' => 'hidden',
@@ -367,16 +342,6 @@ function menu_position_rule_form($form, &$form_state) {
     '#description' => t('This title will be used administratively to identify this rule.'),
     '#required' => TRUE,
   );
-  // Place holder for all condition plug-ins.
-  // Visibility settings.
-  $form['conditions_title'] = array(
-    '#type' => 'item',
-    '#title' => t('Conditions'),
-  );
-  $form['conditions'] = array(
-    '#type' => 'vertical_tabs',
-  );
-
   // Parent menu item.
   if ($mlid) {
     $options = menu_parent_options(menu_get_menus(), menu_link_load($mlid));
@@ -388,28 +353,34 @@ function menu_position_rule_form($form, &$form_state) {
   }
   $form['plid'] = array(
     '#type' => 'select',
-    '#title' => t('Menu item'),
+    '#title' => t('Parent menu item'),
     '#required' => TRUE,
     '#options' => $options,
     '#default_value' => $default,
+    '#description' => t('Select the place in the menu where the rule should position its menu links.'),
   );
 
+  // Place holder for all condition plug-ins.
+  // Visibility settings.
+  $form['conditions_title'] = array(
+    '#type' => 'item',
+    '#title' => t('Conditions'),
+    '#description' => t('All the conditions must be met before a rule is applied.'),
+  );
+  $form['conditions'] = array(
+    '#type' => 'vertical_tabs',
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save'),
+  );
   if ($rid) {
     $form['delete'] = array(
       '#type' => 'submit',
       '#value' => t('Delete'),
     );
   }
-  else {
-    $form['cancel'] = array(
-      '#type' => 'submit',
-      '#value' => t('Cancel'),
-    );
-  }
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Save'),
-  );
 
   // Add conditions.
   foreach (menu_position_get_plugins() as $plugin) {
@@ -440,11 +411,6 @@ function menu_position_rule_form($form, &$form_state) {
  * Validates the form for menu_position_rule_form().
  */
 function menu_position_rule_form_validate($form, &$form_state) {
-  // Check if the user cancelled the form.
-  if (!empty($form['cancel']) && $form_state['values']['op'] == $form['cancel']['#value']) {
-    drupal_goto('admin/structure/menu-position');
-    return;
-  }
   // Check if the user deleted the rule.
   if (!empty($form['delete']) && $form_state['values']['op'] == $form['delete']['#value']) {
     drupal_goto('admin/structure/menu-position/delete/' . $form_state['values']['rid']);
@@ -552,7 +518,7 @@ function menu_position_read_rule($rid) {
  * Retrieves a menu position rule from the database.
  *
  * @return
- *   An assiciative array for all rules with keys equal to the rid of each rule.
+ *   An associative array for all rules with keys equal to the rid of each rule.
  */
 function menu_position_read_rules() {
   $query = db_query('SELECT * FROM {menu_position_rules} ORDER BY weight, rid');
@@ -627,7 +593,17 @@ function menu_position_edit_menu_link($rid, $mlid, $plid, $admin_title) {
   if ($item['mlid']) {
     $existing_item = db_query("SELECT plid, weight FROM {menu_links} WHERE mlid = :mlid", array(':mlid' => $item['mlid']))->fetchAssoc();
     $item['weight'] = ($existing_item['plid'] == $plid) ? $existing_item['weight'] : 0;
+    // If the rule has a new parent, update the old parent.
+    if ($existing_item['plid'] != $item['plid']) {
+      $old_parent = menu_link_load($existing_item['plid']);
+      $old_parent['options']['alter'] = FALSE;
+      menu_link_save($old_parent);
+    }
   }
+  // Update the new parent.
+  $parent = menu_link_load($item['plid']);
+  $parent['options']['alter'] = TRUE;
+  menu_link_save($parent);
   return menu_link_save($item);
 }
 
