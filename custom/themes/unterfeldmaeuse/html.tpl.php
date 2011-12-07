@@ -47,12 +47,13 @@
 <!--[if IE 9 ]>    <html lang="<?php print $language->language; ?>" class="no-js ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="<?php print $language->language; ?>" class="no-js" <?php print $rdf_namespaces; ?>> <!--<![endif]-->
 <head>
+	<title><?php print $head_title; ?></title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Die Theatergruppe UNTERFELDMÄUSE aus Erkrath unterhält seit 1983 ihr Publikum mit Komödien und Kinderstücken. Hier finden Sie Informationen zum Verein, den Stücken, Kartenvorbestellung und mehr.">
+	<meta name="keywords" content="Theatergruppe, Theatergruppe, Erkrath, Aufführungen, Neuigkeiten, Termine, Kartenvorverkauf">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php print $head; ?>
 
-	<title><?php print $head_title; ?></title>
 
 	<link rel="shortcut icon" href="/favicon.ico">
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">

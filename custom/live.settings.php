@@ -243,7 +243,8 @@ $drupal_hash_salt = '';
  * for you.
  */
 # $base_url = 'http://www.example.com';  // NO trailing slash!
-$base_url = 'http://s374957061.online.de';  // NO trailing slash!
+//$base_url = 'http://s374957061.online.de';  // NO trailing slash!
+$base_url = 'http://www.unterfeldmaeuse.de';  // NO trailing slash!
 
 /**
  * PHP settings:
