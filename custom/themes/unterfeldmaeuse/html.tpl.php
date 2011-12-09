@@ -48,10 +48,14 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="<?php print $language->language; ?>" class="no-js" <?php print $rdf_namespaces; ?>> <!--<![endif]-->
 <head>
 	<title><?php print $head_title; ?></title>
-	<meta charset="UTF-8">
-	<meta name="description" content="Die Theatergruppe UNTERFELDMÄUSE aus Erkrath unterhält seit 1983 ihr Publikum mit Komödien und Kinderstücken. Hier finden Sie Informationen zum Verein, den Stücken, Kartenvorbestellung und mehr.">
-	<meta name="keywords" content="Theatergruppe, Theatergruppe, Erkrath, Aufführungen, Neuigkeiten, Termine, Kartenvorverkauf">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8" />
+	<meta name="description" content="Die Theatergruppe UNTERFELDMÄUSE aus Erkrath unterhält seit 1983 ihr Publikum mit Komödien und Kinderstücken. Hier finden Sie Informationen zum Verein, den Stücken, Kartenvorbestellung und mehr." />
+	<meta name="keywords" content="Theatergruppe, Theatergruppe, Erkrath, Aufführungen, Neuigkeiten, Termine, Kartenvorverkauf" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="geo.region" content="DE-NW" />
+	<meta name="geo.placename" content="Karlstraße 7, 40699 Erkrath, Deutschland" />
+	<meta name="geo.position" content="51.22753;6.90955" />
+	<meta name="ICBM" content="51.22753,6.90955" />
 	<?php print $head; ?>
 
 
