@@ -423,12 +423,16 @@ h4 {
 	width: 1em;
 }
 
-.page-neues .pager a {
+.pager a {
 	text-decoration: none;
 }
 
-.page-neues .pager a:hover {
+.pager a:hover {
 	background-color: #ffffff;
+}
+
+.smart-paging-pager {
+	margin-top: 2em;
 }
 
 
