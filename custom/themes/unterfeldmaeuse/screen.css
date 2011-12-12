@@ -147,6 +147,14 @@ header {
 	background-repeat: no-repeat;
 }
 
+img {
+	display: block;
+}
+
+.rtecenter img {
+	margin: 0 auto;
+}
+
 a {
 	color: #009495;
 }
@@ -761,6 +769,15 @@ input[type="text"] {
 
 
 /** Vorverkaufstellen **/
+table tbody tr.odd td {
+	background-color: #ffffff;
+}
+
+table tbody tr.even td {
+	background-color: #eeeeee;
+}
+
+
 #vorverkaufstellen {
 	table-layout: fixed;
 }
@@ -771,8 +788,11 @@ input[type="text"] {
 
 #vorverkaufstellen .logos {
 	vertical-align: middle;
-	text-align: center;
 	width: 12.5em; /* 175 px / 14 px */
+}
+
+#vorverkaufstellen .logos img {
+	margin: 0 auto;
 }
 
 #vorverkaufstellen .adressen {
@@ -968,6 +988,10 @@ label[for='edit-submitted-eingaben-uberprufen'] {
 	
 	.grid-content {
 		padding: 0 1.7142857143em;
+	}
+	
+	table, th, td, thead, tbody {
+		display: block;
 	}
 	
 	.page-neues .views-row img {
