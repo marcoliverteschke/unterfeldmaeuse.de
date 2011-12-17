@@ -5,7 +5,7 @@
  * @file
  * Provides smart paging capability to Drupal contents.
  *
- * @author Roland Michael dela PeÃ±a.
+ * @author Roland Michael dela Peña.
  * @version $Id: smart_paging.module,v 1.1.2.10 2011/02/22 15:29:51 arpeggio Exp $
  */
 
@@ -483,9 +483,7 @@ function smart_paging_url_inbound_alter(&$path, &$original_path, $path_language)
       $alias = arg();
       unset($alias[$arg_count - 2], $alias[$arg_count - 1], $alias[$arg_count]);
       // Get the Drupal system URL for a path alias
-      if (!($drupal_path = drupal_lookup_path('source', implode('/', $alias) , $path_language)) && function_exists("path_alias_xt_get_normal_path")) {
-        $drupal_path = path_alias_xt_get_normal_path(implode('/', $alias) , $path_language);
-      }
+      $drupal_path = drupal_lookup_path('source', implode('/', $alias) , $path_language);
       if (!empty($drupal_path)) {
         // Alter inbound URL request
         $path = $drupal_path;
@@ -506,21 +504,14 @@ function smart_paging_url_outbound_alter(&$path, &$options, $original_path) {
   if (isset($options['query']['page'])) {
     $url_fragment = smart_paging_get_url_fragment();
     $page_query = explode(',', $options['query']['page']);
-    if (!(empty($url_fragment)) && is_array($url_fragment)){
-      foreach ($url_fragment as $index => $fragment) {
-        if ($page_query[1] == $index) {
-          $options['fragment'] = $fragment;
-        }
+    foreach ($url_fragment as $index => $fragment) {
+      if ($page_query[1] == $index) {
+        $options['fragment'] = $fragment;
       }
     }
     if (!empty($path) && !$options['alias']) {
       $language = isset($options['language']) && isset($options['language']->language) ? $options['language']->language : NULL;
-      if (function_exists("path_alias_xt_get_path_alias")) {
-        $alias = path_alias_xt_get_path_alias($original_path, $language);
-      }
-      else {
-        $alias = drupal_get_path_alias($original_path, $language);
-      } 
+      $alias = drupal_get_path_alias($original_path, $language);
       if ($alias != $original_path) {
         $path = $alias;
         $options['alias'] = TRUE;
@@ -809,7 +800,7 @@ function smart_paging_field_attach_view_alter(&$build, $context) {
           'first_element' => empty($pager_page_array[0]) ? 0 : $pager_page_array[0],
           'current_page'  => $current_page,
           'base_url'      => $base_url,
-          'current_url'   => (function_exists("path_alias_xt_get_path_alias") ? path_alias_xt_get_path_alias($_GET['q']) : drupal_get_path_alias($_GET['q'])),
+          'current_url'   => drupal_get_path_alias($_GET['q']),
           'path_prefix'   => variable_get('smart_paging_path_prefix', 'page'),
           'clean_url'     => variable_get('clean_url', 0),
           'custom_url_page' => $custom_url_page,
@@ -1182,7 +1173,7 @@ function theme_smart_paging_page_title_suffix($variable) {
       // MODULE_preprocess_smart_paging_page_title_suffix()
       if (!$set_title_done && !isset($variable['bypass_drupal_set_title'])) {
         // Target head title (<title> tag)
-        drupal_set_title(drupal_get_title() . check_plain ($title_suffix), PASS_THROUGH);
+        drupal_set_title(drupal_get_title() . $title_suffix);
         $set_title_done = TRUE;
       }
     }
