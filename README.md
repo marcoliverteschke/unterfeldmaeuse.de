@@ -30,17 +30,4 @@
 
 ## To Do
 
-* (R) Seite „Geschichte” mit Pagination umgesetzt
-* (R) Inhalt Seite „Satzung” fehlt
-* Seite „Anfahrt” umgesetzt
-* Seite „nächste Premiere” umgesetzt
-* Typ „Bildergalerie” umgesetzt
-* View „Bildergalerien” umgesetzt
-* Inhalte für Bildergalerien übertragen
-* Seite „Kartenvorverkaufstellen” umgesetzt
-* Kartenbestellformular umgesetzt
-* Inhalte Pressearchiv besprochen
-* Inhalte Bereich Newsletter übernommen & Weiterleitungen der alten URLs eingerichtet
-* neues Gästebuch umgesetzt
-* Inhalte Gästebuch übertragen
-
+All did done.
