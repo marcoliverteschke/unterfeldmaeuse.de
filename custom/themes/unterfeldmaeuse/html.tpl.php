@@ -56,6 +56,14 @@
 	<meta name="geo.placename" content="Karlstraße 7, 40699 Erkrath, Deutschland" />
 	<meta name="geo.position" content="51.22753;6.90955" />
 	<meta name="ICBM" content="51.22753,6.90955" />
+	
+	<meta property="og:title" content="<?php print $head_title; ?>"/>
+	<meta property="og:type" content="non_profit"/>
+	<meta property="og:url" content="<?php print url(null, array('absolute' => TRUE)) ?>"/>
+	<meta property="og:image" content="<?php print url('sites/all/themes/unterfeldmaeuse/images/logo.gif', array('absolute' => TRUE)) ?>"/>
+	<meta property="og:site_name" content="<?php print variable_get('site_name', null) ?>"/>
+	<meta property="og:description" content="Die Theatergruppe UNTERFELDMÄUSE aus Erkrath unterhält seit 1983 ihr Publikum mit Boulevardkomödien, Kriminalstücken und Thrillern, Eigenproduktionen und stimmungsvollen Märchenstücken. Hier finden Sie Informationen zum Verein, den Stücken, Kartenvorbestellung und mehr."/>
+	
 	<?php print $head; ?>
 
 
