@@ -13,19 +13,19 @@
 
 ## modules
 
-* admin_menu
-* ckeditor
-* ctools (for views 2)
-* date
-* devel
-* imce
-* jquery_update
-* l10n_update
-* menu_block
-* menu_position
-* pathauto
-* token
-* views
+* `admin_menu`
+* `ckeditor`
+* `ctools (for views 2)`
+* `date`
+* `devel`
+* `imce`
+* `jquery_update`
+* `l10n_update`
+* `menu_block`
+* `menu_position`
+* `pathauto`
+* `token`
+* `views`
 
 
 ## To Do
