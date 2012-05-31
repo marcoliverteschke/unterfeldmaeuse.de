@@ -472,6 +472,7 @@ h4 {
 	margin-bottom: 1em;
 }
 
+/* Premiere-Block */
 #block-block-2 {
 	border: 2px solid #df1114;
 	margin-bottom: 1.7142857143em; /* 24 px / 14 px */
@@ -500,7 +501,7 @@ h4 {
 	color: #df1114;
 }
 
-
+/* Mitmachen-Block */
 #block-block-1 {
 	text-align: center;
 }
@@ -524,6 +525,40 @@ h4 {
 	border: 5px solid #df9711;
 	color: #df9711;
 }
+
+/* Facebook-Block */
+#block-block-4 {
+	border: 2px solid #3b5998;
+	margin-bottom: 1.7142857143em; /* 24 px / 14 px */
+	text-align: center;
+}
+
+#block-block-4 p {
+	padding: .2em;
+}
+
+#block-block-4 h4 {
+	background-color: #3b5998;
+	font-size: 1.5em;
+	padding: .2em .2em;
+}
+
+#block-block-4 h4 .less-important {
+	font-size: .6em;
+}
+
+#block-block-4 h4 a {
+	color: #ffffff;
+	display: block;
+	padding: .8em .5em;
+	text-decoration: none;
+}
+
+#block-block-4 h4 a:hover {
+	background-color: #ffffff;
+	color: #3b5998;
+}
+
 
 
 #block-webform-client-block-273 {
