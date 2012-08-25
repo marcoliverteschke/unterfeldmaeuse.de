@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains the default summary style plugin, which displays items in an HTML list.
@@ -14,11 +15,11 @@ class views_plugin_style_summary_jump_menu extends views_plugin_style {
     $options = parent::option_definition();
 
     $options['base_path'] = array('default' => '');
-    $options['count'] = array('default' => TRUE);
-    $options['hide'] = array('default' => FALSE);
+    $options['count'] = array('default' => TRUE, 'bool' => TRUE);
+    $options['hide'] = array('default' => FALSE, 'bool' => TRUE);
     $options['text'] = array('default' => 'Go', 'translatable' => TRUE);
     $options['choose'] = array('default' => '- Choose -', 'translatable' => TRUE);
-    $options['default_value'] = array('default' => FALSE);
+    $options['default_value'] = array('default' => FALSE, 'bool' => TRUE);
 
     return $options;
   }
@@ -33,7 +34,6 @@ class views_plugin_style_summary_jump_menu extends views_plugin_style {
   }
 
   function options_form(&$form, &$form_state) {
-    parent::options_form($form, $form_state);
     $form['base_path'] = array(
       '#type' => 'textfield',
       '#title' => t('Base path'),
@@ -127,4 +127,3 @@ class views_plugin_style_summary_jump_menu extends views_plugin_style {
     return drupal_render($form);
   }
 }
-

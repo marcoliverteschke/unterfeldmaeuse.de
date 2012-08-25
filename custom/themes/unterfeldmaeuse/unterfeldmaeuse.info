@@ -3,7 +3,7 @@ description = This theme demonstrates Drupal's default HTML markup and CSS style
 package = Core
 version = VERSION
 core = 7.x
-stylesheets[all][] = screen.css
+stylesheets[all][] = screen.less
 scripts[] = js/libs/modernizr-1.7.min.js
 scripts[] = js/script.js
 

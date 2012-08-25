@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Definition of views_plugin_pager_none.
+ */
+
+/**
  * Plugin for views without pagers.
  *
  * @ingroup views_pager_plugins
@@ -32,6 +37,7 @@ class views_plugin_pager_none extends views_plugin_pager {
    * Provide the default form for setting options.
    */
   function options_form(&$form, &$form_state) {
+    parent::options_form($form, $form_state);
     $form['offset'] = array(
       '#type' => 'textfield',
       '#title' => t('Offset'),
