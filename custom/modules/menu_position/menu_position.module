@@ -39,11 +39,19 @@ function menu_position_page_delivery_callback_alter() {
   list($arg0, $arg1, ) = explode('/', $context['path'] . '//');
   if ($arg0 == 'node' && is_numeric($arg1)) {
     $context['node'] = node_load($arg1);
+    // Don't evaluate the rules on a 404 page.
+    if (!$context['node']) {
+      return;
+    }
     $context['entity_type'] = 'node';
     $context['bundle_name'] = $context['node']->type;
   }
   elseif ($arg0 == 'user' && is_numeric($arg1)) {
     $context['user'] = user_load($arg1);
+    // Don't evaluate the rules on a 404 page.
+    if (!$context['user']) {
+      return;
+    }
     $context['entity_type'] = 'user';
     $context['bundle_name'] = 'user';
   }
@@ -160,6 +168,9 @@ function menu_position_menu_position_rule_plugins() {
     ),
     'pages' => array(
       'file' => 'plugins/menu_position.pages.inc',
+    ),
+    'user_role' => array(
+      'file' => 'plugins/menu_position.user_roles.inc',
     ),
   );
   if (module_exists('locale')) {
@@ -324,7 +335,7 @@ function menu_position_activate_rule($rule, $context, $set_breadcrumb) {
     // Manually set the preferred link for this path so that
     // menu_get_active_trail() returns the proper trail.
     $preferred_links = &drupal_static('menu_link_get_preferred');
-    $preferred_links[$_GET['q']] = menu_link_get_preferred($menu_item['link_path']);
+    $preferred_links[$_GET['q']][MENU_PREFERRED_LINK] = menu_link_get_preferred($menu_item['link_path']);
 
     // Remove the menu position router from the end of the trail.
     $active_trail = menu_set_active_trail();

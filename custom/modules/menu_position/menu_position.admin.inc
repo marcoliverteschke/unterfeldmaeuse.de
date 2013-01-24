@@ -22,7 +22,7 @@ function menu_position_settings_form($form, &$form_state) {
     '#options' => array(
       'child' => t("Insert the current page's title into the menu tree."),
       'parent' => t('Mark the rule\'s parent menu item as being "active".'),
-      'none' => t('Don\'t mark any menu as being "active".'),
+      'none' => t('Don\'t mark any menu item as being "active".'),
     ),
     '#default_value' => variable_get('menu_position_active_link_display', 'child'),
     '#description' => t("By default, a matching menu position rule will insert the current page's title into the menu tree just below the rule's parent menu item."),
@@ -60,6 +60,9 @@ function _menu_position_form_menu_overview_form_alter(&$form, &$form_state) {
  * for the link to be edited.
  */
 function _menu_position_form_menu_edit_item_alter(&$form, &$form_state) {
+  if ($form['mlid']['#value'] == 0) {
+    return;
+  }
   // Retrieve all of the rules' mlids.
   $mlids = db_query('SELECT mlid FROM {menu_position_rules} WHERE mlid = :mlid ORDER BY weight, rid', array(':mlid' => (int) $form['mlid']['#value']))->fetchAll();
   if (!empty($mlids)) {
