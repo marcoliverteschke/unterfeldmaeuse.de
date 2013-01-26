@@ -7,5 +7,11 @@
 			drupal_goto('gästebuch', array(), 301);
 		}
 	}
+	
+	
+	function mot_guestbookredirect_update_projects_alter(&$projects)
+	{
+		unset($projects['mot_guestbookredirect']);
+	}
 
 ?>
