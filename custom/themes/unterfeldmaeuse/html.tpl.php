@@ -77,6 +77,17 @@
 	<!--[if IE 6 ]>
 		<link rel="stylesheet" href="/<?php echo path_to_theme() ?>/ie6.1.1.css" />
 	<![endif]-->
+</head>
+
+<body class="<?php print $classes; ?>" <?php print $attributes;?>>
+	<?php print $page_top; ?>
+	<?php print $page; ?>
+	<?php print $page_bottom; ?>
+	<!--[if lt IE 7 ]>
+	<script src="/<?php echo path_to_theme() ?>js/libs/dd_belatedpng.js"></script>
+	<script> DD_belatedPNG.fix('img, .png_bg');</script>
+	<![endif]-->
+
 	<?php print $scripts; ?>
 	<script type="text/javascript">
 
@@ -91,15 +102,5 @@
 	  })();
 
 	</script>
-</head>
-
-<body class="<?php print $classes; ?>" <?php print $attributes;?>>
-	<?php print $page_top; ?>
-	<?php print $page; ?>
-	<?php print $page_bottom; ?>
-	<!--[if lt IE 7 ]>
-	<script src="/<?php echo path_to_theme() ?>js/libs/dd_belatedpng.js"></script>
-	<script> DD_belatedPNG.fix('img, .png_bg');</script>
-	<![endif]-->
 </body>
 </html>
