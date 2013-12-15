@@ -4,7 +4,7 @@ package = Core
 version = VERSION
 core = 7.x
 stylesheets[all][] = screen.less
-scripts[] = js/libs/modernizr-1.7.min.js
+scripts[] = js/libs/modernizr-2.6.2.min.js
 scripts[] = js/script.js
 
 ; Information added by drupal.org packaging script on 2011-06-30
