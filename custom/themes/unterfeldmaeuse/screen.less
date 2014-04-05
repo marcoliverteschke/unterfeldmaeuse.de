@@ -410,12 +410,12 @@ h4 {
 	
 	.views-row-odd img {
 		float: left;
-		margin: 0 .5em .5em 0;
+		margin: 0 1em .5em 0;
 	}
 	
 	.views-row-even img {
 		float: right;
-		margin: 0 0 .5em .5em;
+		margin: 0 0 .5em 1em;
 	}
 	
 	.pager {
@@ -881,8 +881,15 @@ table tbody tr {
 			font-weight: bold;
 			margin: 0.2857142857em 0; /* 4 px / 14 px, 0 */
 		}
+		
+		span.post-title:not([data-uid="uid-0"]):after {
+			color: #009495;
+			content: " (Unterfeldmäuse)";
+		}
 	}
 }
+
+
 
 
 /** Kartenbestellung **/
@@ -1032,6 +1039,15 @@ label[for='edit-submitted-eingaben-uberprufen'] {
 	
 	table, th, td, thead, tbody {
 		display: block;
+	}
+	
+	.page-node-4 table td {
+		text-align: left !important;
+		width: 100% !important;
+	}
+	
+	.page-node-4 table tr td:nth-child(2) {
+		display: none;
 	}
 	
 	.page-neues .views-row img {
