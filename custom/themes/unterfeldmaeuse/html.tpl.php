@@ -66,10 +66,12 @@
 	
 	<?php print $head; ?>
 
-
 	<link rel="alternate" type="application/rss+xml" title="Unterfeldmäuse RSS" href="http://feeds.feedburner.com/unterfeldmaeuse" />
 	<link rel="shortcut icon" href="/favicon.ico">
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+	<?php print $scripts; ?>
+
 	<link href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 	<!--[if ! lte IE 6]><!-->
 		<?php print $styles; ?>
@@ -88,7 +90,6 @@
 	<script> DD_belatedPNG.fix('img, .png_bg');</script>
 	<![endif]-->
 
-	<?php print $scripts; ?>
 	<script type="text/javascript">
 
 	  var _gaq = _gaq || [];
