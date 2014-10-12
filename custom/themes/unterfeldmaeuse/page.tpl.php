@@ -1,7 +1,11 @@
 <div id="container">
 	<header role="banner">
-		<h1><a href="/"><?php print $site_name; ?></a></h1>
-		<h2><?php print $site_slogan; ?></h2>
+		<?php if(isset($site_name) && strlen($site_name) > 0) : ?>
+			<h1><a href="/"><?php print $site_name; ?></a></h1>
+		<?php endif; ?>
+		<?php if(isset($site_slogan) && strlen($site_slogan) > 0) : ?>
+			<h2><?php print $site_slogan; ?></h2>
+		<?php endif; ?>
 		<nav id="tabs">
 			<?php print theme('links__system_main_menu', array('links' => $main_menu, 'attributes' => array('id' => 'main-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t(''))); ?>
 			<div class="clear"></div>
