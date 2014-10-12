@@ -69,47 +69,13 @@
 	<link rel="alternate" type="application/rss+xml" title="Unterfeldmäuse RSS" href="http://feeds.feedburner.com/unterfeldmaeuse" />
 	<link rel="shortcut icon" href="/favicon.ico">
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<<<<<<< HEAD
 	<?php print $styles; ?>
-=======
-
-	<?php print $scripts; ?>
-
-	<link href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-	<!--[if ! lte IE 6]><!-->
-		<?php print $styles; ?>
-	<!--<![endif]-->
-	<!--[if IE 6 ]>
-		<link rel="stylesheet" href="/<?php echo path_to_theme() ?>/ie6.1.1.css" />
-	<![endif]-->
->>>>>>> 6907ab616665a3350ef1a57b1f26f77b2a437b04
 </head>
 
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
 	<?php print $page_top; ?>
 	<?php print $page; ?>
 	<?php print $page_bottom; ?>
-<<<<<<< HEAD
 	<?php print $scripts; ?>
-=======
-	<!--[if lt IE 7 ]>
-	<script src="/<?php echo path_to_theme() ?>js/libs/dd_belatedpng.js"></script>
-	<script> DD_belatedPNG.fix('img, .png_bg');</script>
-	<![endif]-->
-
-	<script type="text/javascript">
-
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-27337308-1']);
-	  _gaq.push(['_trackPageview']);
-
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-
-	</script>
->>>>>>> 6907ab616665a3350ef1a57b1f26f77b2a437b04
 </body>
 </html>
