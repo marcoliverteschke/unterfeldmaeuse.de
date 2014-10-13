@@ -5,7 +5,8 @@
 		$two_col_pages = array(
 			'verein/vorstand',
 			'kartenvorverkauf/vorverkaufstellen',
-			'freunde-förderer'
+			'freunde-förderer',
+			'user',
 		);
 
 		$columns = 'three-columns';

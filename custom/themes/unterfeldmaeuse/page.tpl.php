@@ -14,7 +14,15 @@
 
 	<section id="main" role="main">
 		<?php
-			$two_column = $is_front || (isset($node) && $node->type == 'newsmeldung');
+			$two_column = false;
+			$two_column = $is_front;
+			if(!$two_column) {
+				if(isset($node) && $node->type == 'newsmeldung') {
+//					if(isset($node->field_bereich) && isset($node->field_bereich['und'][0]['tid']) && (int)$node->field_bereich['und'][0]['tid'] === 1) {
+						$two_column = TRUE; // U-Mäuse-News sehen zweispaltig auch besser aus… lassen wir erst mal so
+//					}
+				}
+			}
 		?>
 		<?php if(!$two_column): ?>
 			<div class="grid-1 grid-first" id="left-column">
