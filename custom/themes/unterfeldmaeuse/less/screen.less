@@ -96,6 +96,7 @@ a:hover { color: #036; }
 html { font-size: 62.5%; } // Needed to make 1em equal 10px
 
 @color-highlight: #2A777E;
+@color-unterfeldmaeuse: #009495;
 
 body {
 	background-color: #efefef;
@@ -124,7 +125,7 @@ strong {
 	background-color: #ffffff;
 	box-shadow: 0 .5em 1em #666666;
 	margin: 1em auto;
-	padding: 0 0.3571428571em; /* 0, 5 px / 14 px */
+	padding: 0 5px;
 	max-width: 950px;
 }
 
@@ -138,12 +139,13 @@ img {
 
 a {
 	color: @color-highlight;
+
+	&:hover {
+		background-color: @color-highlight;
+		color: #ffffff;
+	}
 }
 
-a:hover {
-	background-color: @color-highlight;
-	color: #ffffff;
-}
 
 h1, h2, h3, h4 {
 	//font-family: 'Nobile', 'Helvetica Neue', 'Arial', sans-serif;
@@ -166,7 +168,7 @@ header h1 {
 	background-position: right center;
 	background-repeat: no-repeat;
 	font-size: 3em;
-	padding: .5em 0 .5em 24px;
+	padding: .5em 200px .5em 24px;
 	text-shadow: 1px 1px 2px @color-highlight;
 	font-variant: small-caps;
 	text-transform: none;
@@ -179,12 +181,6 @@ header h1 {
 	}
 }
 
-.branch-unterfeldmaeuse header h1 {
-	background-image: url('../images/logo-unterfeldmaeuse.gif');
-//	background-position: 772px center;
-//	background-repeat: no-repeat;
-}
-
 h2 {
 //	font-size: 1.2857142857em; /* 18 px / 14 px */
 	margin: 1.5em 0 1em 0; /* 27px / 18 px, 0, 18px, 0 */
@@ -192,25 +188,23 @@ h2 {
 
 header h2 {
 	margin-bottom: 2.6666666667em; /* 48px / 18 px */
-	margin-top: 1em; /* 18 px */
+	margin-top: 1em;
 	padding: 0 0 0 1.3333333333em; /* 0, 0, 0, 24 px / 18 px */
 }
 
 
 .grid-content h1 {
-//	font-size: 1.2857142857em; /* 18 px / 14 px */
-	margin-bottom: 1em; /* 18 px / 18 px */
+	.font-size(24);
+	margin-bottom: 1em;
 	padding: 0;
 	text-shadow: none;
 }
 
 h3 {
-//	font-size: 1.0714285714em; /* 15 px / 14 px */
 	margin: 1em 0 0.4666666667em 0; /* 15 px / 15 px, 0, 7 px / 15 px, 0 */
 }
 
 h4 {
-//	font-size: 1.0714285714em; /* 15 px / 14 px */
 }
 
 #center-column {
@@ -219,6 +213,11 @@ h4 {
 	p {
 		margin-bottom: .5em;
 		line-height: 140%;
+	}
+	
+	img {
+		height: auto !important;
+		max-width: 100% !important;
 	}
 }
 
@@ -1038,6 +1037,60 @@ label[for='edit-submitted-eingaben-uberprufen'] {
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
+
+
+/* Bereich Unterfeldmäuse */
+.branch-unterfeldmaeuse {
+	header h1 {
+		background-image: url('../images/logo-unterfeldmaeuse.gif');
+	}
+	
+	a {
+		color: @color-unterfeldmaeuse;
+
+		&:hover {
+			background-color: @color-unterfeldmaeuse;
+			color: #ffffff;
+		}
+	}
+	
+	h1 a {
+		&, &:hover, &:visited, &:active {
+			background-color: transparent;
+			color: #444444;
+		}
+	}
+	
+	header h1 {
+		text-shadow: 1px 1px 2px @color-unterfeldmaeuse;
+	}
+	
+	#tabs {
+		background-color: @color-unterfeldmaeuse;
+
+		a {
+			&:hover {
+				background-color: lighten(@color-unterfeldmaeuse, 10%);
+			}
+		}
+	}
+	
+	#block-menu-block-1 {
+		ul {
+			li {
+				&.active > a, a:hover {
+					background-color: @color-unterfeldmaeuse;
+				}
+			}
+		}
+	}
+	
+	#footer {
+		a:hover {
+			color: @color-unterfeldmaeuse;
+		}
+	}
+}
 
 
 /*		Mobile Layout: 320px.
