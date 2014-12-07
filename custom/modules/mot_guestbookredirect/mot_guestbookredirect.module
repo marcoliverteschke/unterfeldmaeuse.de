@@ -13,5 +13,16 @@
 	{
 		unset($projects['mot_guestbookredirect']);
 	}
+	
+	
+	function mot_guestbookredirect_node_validate($node, $form, &$form_state) {
+//		if($form['#form_id'] == 'gaestebucheintrag_node_form') {
+//			if(function_exists('email_verify_check')) {
+//				$error = email_verify_check($form_state['input']['field_guestbook_email']['und'][0]['email']);
+//				$form_state['input']['field_guestbook_email_check']['und'][0]['value'] = strip_tags($error);
+//				$form_state['values']['field_guestbook_email_check']['und'][0]['value'] = strip_tags($error);
+//			}
+//		}
+	}
 
 ?>
