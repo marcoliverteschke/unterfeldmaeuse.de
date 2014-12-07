@@ -95,7 +95,7 @@ a:hover { color: #036; }
 // USE
 html { font-size: 62.5%; } // Needed to make 1em equal 10px
 
-@color-highlight: #2A777E;
+@color-highlight: #008090;
 @color-unterfeldmaeuse: #009495;
 
 body {
@@ -1093,6 +1093,17 @@ label[for='edit-submitted-eingaben-uberprufen'] {
 }
 
 
+@media screen and (max-width: 960px) {
+	#tabs {
+		font-size: .9em;
+	}
+	
+	#right-column {
+		display: none;
+	}
+}
+
+
 /*		Mobile Layout: 320px.
 		Inherits styles from: Default Layout. */
 
@@ -1117,6 +1128,7 @@ label[for='edit-submitted-eingaben-uberprufen'] {
 	#tabs {
 		background-color: @color-highlight;
 		background-image: none;
+		font-size: 1em;
 		height: auto;
 		left: 0;
 		width: 100%;
